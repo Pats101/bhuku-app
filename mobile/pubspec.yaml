@@ -1,0 +1,41 @@
+name: bhuku
+description: Offline-first inventory & debt tracker for informal traders in Zimbabwe.
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod: ^2.5.1
+
+  # Local database (offline-first source of truth)
+  drift: ^2.16.0
+  sqlite3_flutter_libs: ^0.5.20
+  path_provider: ^2.1.2
+  path: ^1.9.0
+
+  # Networking & sync
+  dio: ^5.4.1
+  connectivity_plus: ^6.0.1
+
+  # Auth
+  supabase_flutter: ^2.5.0
+
+  # Utilities
+  uuid: ^4.3.3 # client-generated UUIDv4 ids (offline-first requirement)
+  intl: ^0.19.0 # money/date formatting only — never for storage
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.8
+  drift_dev: ^2.16.0
+
+flutter:
+  uses-material-design: true
