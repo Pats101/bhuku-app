@@ -4,14 +4,12 @@
 !*.env.example
 
 # ---- Markdown docs ----
-# Ignore ALL markdown (ARCHITECTURE.md, PRD.md, tasks.md, progress.md,
-# docs/*.md, etc.) EXCEPT the repo's public README, the project CLAUDE.md,
-# and the .claude/ agent + skill definitions (the team must live in the repo).
+# Ignore ALL markdown EXCEPT the repo's public README and ARCHITECTURE.md.
+# Everything else is personal/local and not shared: CLAUDE.md, the .claude/
+# agents + skills, PRD.md, tasks.md, progress.md, docs/*.md.
 *.md
 !README.md
-!CLAUDE.md
 !ARCHITECTURE.md
-!.claude/**/*.md
 
 # ---- macOS ----
 .DS_Store
