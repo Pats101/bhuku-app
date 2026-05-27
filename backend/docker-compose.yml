@@ -1,0 +1,32 @@
+# Local dev stack: API + Postgres. One command to a running backend.
+#   docker compose up --build
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: bhuku
+      POSTGRES_PASSWORD: bhuku
+      POSTGRES_DB: bhuku
+    ports:
+      - "5432:5432"
+    volumes:
+      - bhuku_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bhuku"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    environment:
+      DATABASE_URL: postgresql+asyncpg://bhuku:bhuku@db:5432/bhuku
+      SUPABASE_JWT_SECRET: ${SUPABASE_JWT_SECRET:-change-me}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  bhuku_pgdata:
